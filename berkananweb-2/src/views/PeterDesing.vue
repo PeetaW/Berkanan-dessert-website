@@ -8,11 +8,33 @@
         <h3>Berkanan<br>柏卡納手作烘焙</h3>
       </div>
     </div>
+    <div class="hamburger" @click="toggleMenu" v-bind:class="{'is-active': isActive}">
+      <a role="button" class="hamburgerButton">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
     <div class="category">
       <a>關於我們 About us</a>
       <a>商品列表 Shopping list</a>
       <a>訂購表單 Order form</a>
       <a>聯絡我們 Contact us</a>
+    </div>
+    <div class="hamburgerMenu" @click="toggleMenu" v-bind:class="{'is-active': isActive}">
+      <div class="menuFrame">
+        <div class="navLink">
+          <ul class="linkList">
+            <li><a>關於我們 About us</a></li>
+            <hr>
+            <li><a>商品列表 Shopping list</a></li>
+            <hr>
+            <li><a>訂購表單 Order form</a></li>
+            <hr>
+            <li><a>聯絡我們 Contact us</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
   <CustomCarousel :images="productImages" :interval="3000"/>
@@ -69,7 +91,13 @@ export default {
         'dessert-shop-diagram.jpg',
         'coffee-shop.jpg',
         'Boston-pie.jpg'
-      ]
+      ],
+      isActive: false
+    }
+  },
+  methods: {
+    toggleMenu () {
+      this.isActive = !this.isActive
     }
   }
 }
@@ -90,6 +118,12 @@ nav.berkanan_content {
   justify-content: space-between;
   background-color: #9e7676;
   height: 11vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  overflow: hidden;
 
   div.logo_berkanan{
     display: flex;
@@ -114,6 +148,43 @@ nav.berkanan_content {
     }
   }
 
+  div.hamburger{
+    display: none;
+    a{
+      display: inline-block;
+      padding: 2px 10px;
+      cursor: pointer;
+      &:hover{
+      background-color: #fff8ea;
+      span{
+        background-color: #9e7676;
+      }
+      }
+      span{
+        // border: solid 1px black;
+        display: block;
+        height: 4px;
+        width: 35px;
+        margin: 5px 0;
+        background-color: #fff8ea;
+        transition: ease 0.3s;
+      }
+    }
+    &.is-active{
+        a{
+          span:nth-child(1){
+            transform: rotate(45deg) translate(5px, 7px);
+          }
+          span:nth-child(2){
+            opacity: 0;
+          }
+          span:nth-child(3){
+            transform: rotate(-45deg) translate(5px, -7px);
+          }
+        }
+      }
+  }
+
   div.logoTest{
     // width: 100px;
     height: 100%;
@@ -125,11 +196,10 @@ nav.berkanan_content {
 
   div.category{
     display: inline-block;
+    // display: none;
     width: 50%;
     background-color: #9e7676;
-  }
-
-  a {
+    a{
     display: inline-block;
     vertical-align: middle;
     padding: 0px 10px;
@@ -140,6 +210,46 @@ nav.berkanan_content {
     &:hover{
       background-color: #fff8ea;
       color: #9e7676;
+    }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  nav.berkanan_content{
+  div.category{
+      display: none;
+  }
+  div.hamburger{
+    display: block;
+  }
+  }
+}
+
+div.hamburgerMenu{
+  height: 0;
+  overflow: hidden;
+  transition: height 1s ease-in-out;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  z-index: 2;
+  &.is-active{
+    height: calc(100vh - 100px);
+  }
+
+  div.navLink{
+    display: flex;
+    ul.linkList{
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+      font-size: 2rem;
+      li{
+        margin: 15px 0px;
+      }
     }
   }
 }
@@ -170,4 +280,5 @@ div.topImage{
 div.bottomInfo{
   padding: 20px 0px;
 }
+
 </style>
