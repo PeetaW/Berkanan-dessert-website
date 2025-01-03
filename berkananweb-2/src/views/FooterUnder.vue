@@ -22,11 +22,17 @@
     <h3>Follow us</h3>
     <div class="icon">
       <div class="facebook">
-        <i class="fa-brands fa-facebook"></i>
+        <font-awesome-icon :icon="['fab', 'facebook']" />
       </div>
-      <div class="instagram"></div>
-      <div class="LINE"></div>
-      <div class="telephone"></div>
+      <div class="instagram">
+        <font-awesome-icon :icon="['fab', 'instagram']" />
+      </div>
+      <div class="LINE">
+        <font-awesome-icon :icon="['fab', 'line']" />
+      </div>
+      <div class="telephone">
+        <font-awesome-icon :icon="['fas', 'phone']" />
+      </div>
     </div>
   </div>
 </template>
@@ -65,11 +71,16 @@ div.follow-us{
   display: inline-block;
   width: 100%;
   background-color: #9e7676;
+  h3{
+    font-size: 1.8rem;
+  }
 }
 
-div.facebook{
-  width: 15px;
-  height: 15px;
+div.icon{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 3rem;
 }
 
 p{

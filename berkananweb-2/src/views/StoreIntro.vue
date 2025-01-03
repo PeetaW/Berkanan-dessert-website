@@ -36,9 +36,29 @@ div.concept, div.origin{
   margin: 10px;
 }
 
-div.picture, div.conceptDescript, div.originPicture, div.originDescript{
+div.conceptDescript, div.originDescript{
   width: 700px;
   height: 500px;
+}
+
+div.picture, div.originPicture{
+  width: calc(100% - 720px);
+  height: 500px;
+}
+
+@media screen and (max-width: 768px) {
+  div.concept, div.origin{
+    display: block;
+  }
+  div.picture, div.originPicture{
+    width: 100%;
+    height: 280px;
+  }
+
+  div.conceptDescript, div.originDescript{
+    width: 100%;
+    display: block;
+  }
 }
 
 div.picture{

@@ -71,8 +71,8 @@ export default {
 div.carousel{
   position: relative;
   margin: auto;
-  height: 90vh;
-  width: 80vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
