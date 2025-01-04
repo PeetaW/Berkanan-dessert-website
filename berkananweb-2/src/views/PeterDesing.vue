@@ -16,29 +16,29 @@
       </a>
     </div>
     <div class="category">
-      <a>關於我們 About us</a>
-      <a>商品列表 Shopping list</a>
+      <a href="#sectionCatalog">關於我們 About us</a>
+      <a href="#sectionBestSeller">商品列表 Shopping list</a>
       <a>訂購表單 Order form</a>
-      <a>聯絡我們 Contact us</a>
+      <a href="#sectionContact">聯絡我們 Contact us</a>
     </div>
-    <div class="hamburgerMenu" @click="toggleMenu" v-bind:class="{'is-active': isActive}">
+    <div class="hamburgerMenu" v-bind:class="{'is-active': isActive}">
       <div class="menuFrame">
         <div class="navLink">
           <ul class="linkList">
-            <li><a>關於我們 About us</a></li>
+            <li><a href="#sectionCatalog" @click="toggleMenu">關於我們 About us</a></li>
             <hr>
-            <li><a>商品列表 Shopping list</a></li>
+            <li><a href="#sectionBestSeller" @click="toggleMenu">商品列表 Shopping list</a></li>
             <hr>
             <li><a>訂購表單 Order form</a></li>
             <hr>
-            <li><a>聯絡我們 Contact us</a></li>
+            <li><a href="#sectionContact" @click="toggleMenu">聯絡我們 Contact us</a></li>
           </ul>
         </div>
       </div>
     </div>
   </nav>
   <CustomCarousel :images="productImages" :interval="3000"/>
-  <section>
+  <section id="sectionCatalog">
     <div class="hello">
       <h3>商品目錄 Catalog</h3>
     </div>
@@ -50,13 +50,13 @@
       </div>
     </div>
   </section>
-  <section>
+  <section id="sectionBestSeller">
     <BestSeller msg="暢銷商品 Best Seller"/>
   </section>
   <section>
     <StoreIntro/>
   </section>
-  <section>
+  <section id="sectionContact">
     <FooterBack/>
   </section>
 </template>
@@ -123,7 +123,7 @@ nav.berkanan_content {
   left: 0;
   width: 100%;
   z-index: 1000;
-  overflow: hidden;
+  // overflow: hidden;
 
   div.logo_berkanan{
     display: flex;
@@ -207,6 +207,7 @@ nav.berkanan_content {
     width: 150px;
     background-color: #9e7676;
     color: #fff8ea;
+    text-decoration: none;
     &:hover{
       background-color: #fff8ea;
       color: #9e7676;
@@ -223,6 +224,9 @@ nav.berkanan_content {
   div.hamburger{
     display: block;
   }
+  div.hamburgerMenu{
+    top: 68px;
+  }
   }
 }
 
@@ -231,11 +235,11 @@ div.hamburgerMenu{
   overflow: hidden;
   transition: height 1s ease-in-out;
   position: absolute;
-  top: 100px;
+  top: 75px;
   left: 0;
   background-color: rgba(255, 255, 255, 0.8);
   width: 100%;
-  z-index: 2;
+  z-index: 5;
   &.is-active{
     height: calc(100vh - 100px);
   }
@@ -246,9 +250,12 @@ div.hamburgerMenu{
       list-style-type: none;
       padding: 0;
       text-align: left;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      a{
+        text-decoration: none;
+      }
       li{
-        margin: 15px 0px;
+        margin: 15px 15px;
       }
     }
   }

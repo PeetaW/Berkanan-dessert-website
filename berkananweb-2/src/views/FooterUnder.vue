@@ -40,10 +40,6 @@
 <style lang="scss" scoped>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js');
 
-*{
-  // border: solid 1px black
-}
-
 div.footer-background{
   // height: 70vh;
   background-color: #9e7676;

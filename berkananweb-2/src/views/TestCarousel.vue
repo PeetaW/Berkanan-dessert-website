@@ -70,8 +70,8 @@ export default {
 <style lang="scss" scoped>
 div.carousel{
   position: relative;
-  margin: auto;
-  height: 100%;
+  margin-top: 6vh;
+  height: 80vh;
   width: 100%;
   overflow: hidden;
 }
@@ -79,6 +79,7 @@ div.carousel{
 div.carousel-inner{
   display: flex;
   transition: ease-in-out 0.5s;
+  height: 100%;
 }
 
 div.carousel-item{
@@ -90,7 +91,7 @@ img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
 }
 
 button.carousel-control{
